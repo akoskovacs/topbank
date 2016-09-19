@@ -1,0 +1,56 @@
+h2 Üdvözlet #{ugyfel.nev}!
+
+ul
+    li
+        label Név: 
+        label= ugyfel.nev
+    li
+        label Város: 
+        label= ugyfel.varos
+    li
+        label Lakcím: 
+        label= ugyfel.lakcim
+
+    li
+        label Azonosító: 
+        label= ugyfel.azonosito
+    li
+        .medium.btn.primary.pretty
+            a(href="/tranzakcio/uj") Új tranzakció
+
+h3 Számlák
+table.striped.rounded
+    thead
+        tr
+            th Számlaszám
+            th Egyenleg
+            th Nyitási idő
+    tbody
+        - szamlak.each do |sz|
+            tr
+                td= sz.szamlaszam
+                td= sz.egyenleg
+                td= sz.nyitasi_ido
+            
+h3 Eddigi tranzakciók
+table.striped.rounded
+    thead
+        tr
+            th Azonosító
+            th Összeg
+            th Közlöny
+            th Leírás
+            th Küldő
+            th Fogadó
+    tbody
+        - ugyfel.szamlak.each do |sz|
+            - sz.tranzakciok.each do |t|
+                tr
+                    td= t.azonosito
+                    td= t.osszeg
+                    td= t.kozlony if t.kozlony != nil
+                    td= t.leiras if t.leiras != nil
+                    td= t.kuldo
+                    td= t.fogado
+            
+a(href='/')Vissza a kezdőoldalra

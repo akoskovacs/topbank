@@ -1,0 +1,7 @@
+h2 Bank fiókjaink
+ul
+    - fiokok.each do |fiok|
+        li 
+            h3= fiok.teljes_cim
+        -#iframe(width="600" height="450" frameborder="0" style="border:0" src="https://maps.googleapis.com/maps/api/staticmap?center=#{URI.encode fiok.teljes_cim}&zoom=14&size=400x400&key=AIzaSyA0j34YFD8kyitGT8l23mtPD84ReconeNs")
+        img(frameborder="0" style="border:0" src="https://maps.googleapis.com/maps/api/staticmap?center=#{URI.encode fiok.teljes_cim}&zoom=16&size=400x400&key=AIzaSyA0j34YFD8kyitGT8l23mtPD84ReconeNs")

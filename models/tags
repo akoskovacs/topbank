@@ -1,0 +1,42 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DBModel	DBModel.rb	/^class DBModel$/;"	c
+Fiok	Fiok.rb	/^class Fiok < DBModel$/;"	c
+Kartya	Kartya.rb	/^class Kartya < DBModel$/;"	c
+Szamla	Szamla.rb	/^class Szamla < DBModel$/;"	c
+Tranzakcio	Tranzakcio.rb	/^class Tranzakcio < DBModel$/;"	c
+Ugyfel	Ugyfel.rb	/^class Ugyfel < DBModel$/;"	c
+all	DBModel.rb	/^    def self.all$/;"	F	class:DBModel
+all	Tranzakcio.rb	/^    def self.all$/;"	F	class:Tranzakcio
+belep	Tranzakcio.rb	/^    def self.belep(cred)$/;"	F	class:Tranzakcio
+belep	Ugyfel.rb	/^    def self.belep(cred)$/;"	F	class:Ugyfel
+connect	DBModel.rb	/^    def self.connect(user, pass, host, db_name)$/;"	F	class:DBModel
+find_by	DBModel.rb	/^    def self.find_by(by, what)$/;"	F	class:DBModel
+find_by_id	Fiok.rb	/^    def self.find_by_id(id)$/;"	F	class:Fiok
+find_by_id	Tranzakcio.rb	/^    def find_by_id(id)$/;"	f	class:Tranzakcio
+find_by_id	Ugyfel.rb	/^    def self.find_by_id(id)$/;"	F	class:Ugyfel
+find_by_name	Tranzakcio.rb	/^    def find_by_name(name)$/;"	f	class:Tranzakcio
+find_by_name	Ugyfel.rb	/^    def self.find_by_name(name)$/;"	F	class:Ugyfel
+find_by_owner	Kartya.rb	/^    def self.find_by_owner(code)$/;"	F	class:Kartya
+find_by_owner	Szamla.rb	/^    def self.find_by_owner(code)$/;"	F	class:Szamla
+fiok	Ugyfel.rb	/^    def fiok$/;"	f	class:Ugyfel
+fogado_szamla	Tranzakcio.rb	/^    def fogado_szamla$/;"	f	class:Tranzakcio
+initialize	Fiok.rb	/^    def initialize(params)$/;"	f	class:Fiok
+initialize	Kartya.rb	/^    def initialize(params)$/;"	f	class:Kartya
+initialize	Szamla.rb	/^    def initialize(params)$/;"	f	class:Szamla
+initialize	Tranzakcio.rb	/^    def initialize(params)$/;"	f	class:Tranzakcio
+initialize	Ugyfel.rb	/^    def initialize(params)$/;"	f	class:Ugyfel
+kartyak	Szamla.rb	/^    def kartyak$/;"	f	class:Szamla
+pack_rows	DBModel.rb	/^    def self.pack_rows q, klass$/;"	F	class:DBModel
+save	Fiok.rb	/^    def save$/;"	f	class:Fiok
+save	Tranzakcio.rb	/^    def save$/;"	f	class:Tranzakcio
+szamla	Kartya.rb	/^    def szamla$/;"	f	class:Kartya
+szamlak	Ugyfel.rb	/^    def szamlak$/;"	f	class:Ugyfel
+teljes_cim	Fiok.rb	/^    def teljes_cim$/;"	f	class:Fiok
+ugyfel	Kartya.rb	/^    def ugyfel$/;"	f	class:Kartya
+ugyfel	Szamla.rb	/^    def ugyfel$/;"	f	class:Szamla
+ugyfelek	Fiok.rb	/^    def ugyfelek$/;"	f	class:Fiok

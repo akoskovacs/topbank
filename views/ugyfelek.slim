@@ -1,0 +1,21 @@
+h2 Ügyfeleink:
+ul
+    - ugyfelek.each do |ugyfel|
+        li
+            ul
+                li
+                    label Név: 
+                    label= ugyfel.nev
+                li
+                    label Város: 
+                    label= ugyfel.varos
+                li
+                    label Lakcím: 
+                    label= ugyfel.lakcim
+
+                li
+                    label Azonosító: 
+                    a(href="/ugyfel/#{ugyfel.azonosito}")= ugyfel.azonosito
+                li
+                    a(href="/szamlak/#{ugyfel.azonosito}") Eddigi számlák
+a(href='/') Vissza a kezdőoldalra
