@@ -1,0 +1,73 @@
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | ${customer.getName()}">
+<#if current_customer.getId() == customer.getId()>
+    <h2>Üdvözöljük, ${customer.getName()}!</h2>
+</#if>
+<div class="row">
+<p></p>
+</div>
+<div class="row">
+    <table id="customer_table">
+        <thead>
+            <tr>
+                <th>Ügyfélazonosító</th>
+                <th>Név</th>
+                <th>Személyi/cégazonosító</th>
+                <th>Város</th>
+                <th>Lakcím</th>
+                <th>Irányítószám</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${customer.getId()}</td>
+                <td>${customer.getName()}</td>
+                <td>${customer.getPrivateId()}</td>
+                <td>${customer.getCity()}</td>
+                <td>${customer.getAddress()}</td>
+                <td>${customer.getPostalCode()}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p></p>
+<h3>Számlák:</h3>
+<div class="row">
+    <div class="twelve columns">
+    <table>
+        <thead>
+            <tr>
+                <th>Azonosító</th>
+                <th>Számladíj</th>
+                <th>Hitelkeret</th>
+                <th>Kamat</th>
+                <th>Egyenleg</th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list accounts as acc>
+                <tr>
+                    <td><a href="/account/${acc.getId()}">${acc.getId()}</a></td>
+                    <td>${acc.getFee()?string.currency}</td>
+                    <td>${acc.getCreditLoan()?string.currency}</td>
+                    <td>#{acc.getCreditInterest(); M2} %</td>
+                    <td><strong>${acc.getAmount()?string.currency}</strong><td>
+                </tr>
+            </#list>
+        </tbody>
+    </table>
+    </div>
+</div>
+<p></p>
+<div class="row">
+    <div class="four columns">
+        <div class="btn pretty primary medium btn">
+            <#if is_admin>
+                <a href="/customer/${customer.getId()}/transaction/new">Új tranzakció</a>
+            <#else>
+                <a href="/transaction/new">Új tranzakció</a>
+            </#if>
+        </div>
+    </div>
+</div>
+</@layout.mainLayout>

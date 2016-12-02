@@ -1,0 +1,49 @@
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | Ügyfél lista">
+<h2>Ügyfél Lista</h2>
+<div class="row">
+    <div class="four columns">
+        <div class="pretty primary medium btn">
+            <a href="/customer/new">Új Ügyfél felvétele</a>
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="row">
+<div class="columns eleven">
+<table class="striped rounded">
+    <thead>
+        <tr>
+            <th>Azonosító</th>
+            <th>Név</th>
+            <th>Személyi/cégjel</th>
+            <th>Város</th>
+            <th>Irányítószám</th>
+            <th>Cím</th>
+        </tr>
+    </thead>
+    <tbody>
+        <#list customers as c>
+            <tr>
+                <td><a href="/customer/${c.getId()}">${c.getId()}</a></td>
+                <td><a href="/customer/${c.getId()}">${c.getName()}
+                        <#if c.isAdmin() >
+                            <span class="danger label">Ügyintéző</span>
+                        </#if>
+                        </a>
+                </td>
+                <td>${c.getPrivateId()}</td>
+                <td>${c.getCity()}</td>
+                <td>${c.getPostalCode()}</td>
+                <td>${c.getAddress()}</td>
+            </tr>
+        </#list>
+    </tbody>
+</table>
+</div>
+</div>
+<div class="linkek">
+  <a href="/profile">Vissza a profilra</a>
+</div>
+</@layout.mainLayout>
+

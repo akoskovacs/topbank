@@ -1,0 +1,53 @@
+<#macro inputFor type field v="" pholder="">
+    <#if transaction?? && transaction.hasErrorsFor(field) >
+        <li class="field danger">
+    <#else>
+        <li class="field">
+    </#if>
+            <input type="${type}" value="${v}" name="${field}" class="input" placeholder="${pholder}"  />
+            <#if transaction?? && transaction.hasErrorsFor(field)>
+                <ul class="field-errors">
+                    <#list transaction.errorsFor(field) as error>
+                        <li>${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </li>
+</#macro>
+
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | Új Tranzakció">
+<h2>Új Tranzakció</h2>
+<div class="row">
+    <form action="/customer/${customer.getId()}/transaction/new" method="POST" class="six columns centered">
+        <ul>
+            <@inputFor type="text" field="amount" v=(transaction.getAmount())! pholder="Összeg" />
+            <@inputFor type="text" field="payee_account_id" v=(transaction.getPayeeAccountId())! pholder="Fogadó számla" />
+            <@inputFor type="text" field="tr_statement" v=(transaction.getStatement())! pholder="Közlöny (nem kötelező)" />
+            <@inputFor type="text" field="tr_comment" v=(transaction.getComment())! pholder="Leírás (nem kötelező)" />
+            <li class="field">
+                <label for="payer_account_id">Küldő számla:</label>
+                <div class="picker">
+                    <select name="payer_account_id">
+                      <#list accounts as accs>
+                          <option value="${accs.getId()}">${accs.getId()}</option>
+                      </#list>
+                    </select>
+              </div>
+            </li>
+            <li class="field">
+                <div class="four columns pretty medium secondary btn">
+                    <input class="default" type="submit" value="Mentés" />
+                </div>
+            </li>
+        </ul>
+    <form>
+</div>
+
+<div class="linkek">
+  <ul>
+      <li><a href="/customer/all">Összes ügyfél</a></li>
+      <li><a href="/">Vissza a kezdőoldalra</a></li>
+  </ul>
+</div>
+</@layout.mainLayout>

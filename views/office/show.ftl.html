@@ -1,0 +1,14 @@
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | ${office.getLongAddress()}">
+<h2>${office.getLongAddress()}</h2>
+<iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAWEKr1pVcKoprWazj9RQqHLBPZ7bFSFfU&q=${office.getLongAddress()}"
+allowfullscreen></iframe>
+<h4>Nyitvatartás:</h4>
+<p>Hétfő-Péntek: <b>9:00 - 16:00</b><br />
+Szombat: <b>9:00 - 12:00</b><br />
+Vasárnap: <i>Zárva</i></p><br />
+<p>
+    <a href="/offices">Összes fiók</a>
+</p>
+</@layout.mainLayout>

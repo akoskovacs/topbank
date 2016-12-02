@@ -1,0 +1,36 @@
+<#macro mainLayout title="TOP Bank">
+<!DOCTYPE html>
+<html>
+    <head><title>${title}</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="/css/gumby.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="/js/libs/jquery-2.0.2.min.js"></script>
+        <script gumby-touch="js/libs" src="/js/libs/gumby.min.js"></script>
+        <script type="text/javascript" src="/js/main.js"> </script>
+        <script type="text/javascript" src="/js/plugins.js"> </script>
+        <#-- TODO: scriptek --> 
+    </head>
+    <body>
+      <#-- Most jön a menü -->
+      <#include "menu.ftl.html">
+      <div class="content">
+        <div class="row">
+          <div class="eleven columns rounded centered">
+            <#-- Itt van a flash üzenetek helye -->
+            <div class="row">
+                <div id="alert-box">
+                    <#list flash as f>
+                        <div class="alert ${f[0]}">${f[1]}</div>
+                    </#list>
+                </div>
+            </div>
+            <#-- Ide épülnek be az aloldalak -->
+            <#nested />
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
+</#macro>

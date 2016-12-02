@@ -1,0 +1,64 @@
+<#macro inputFor type field v="" pholder="">
+    <#if customer?? && customer.hasErrorsFor(field) >
+        <li class="field danger">
+    <#else>
+        <li class="field">
+    </#if>
+            <input type="${type}" value="${v}" name="${field}" class="input" placeholder="${pholder}"  />
+            <#if customer?? && customer.hasErrorsFor(field)>
+                <ul class="field-errors">
+                    <#list customer.errorsFor(field) as error>
+                        <li>${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </li>
+</#macro>
+
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | Új Ügyfél Felvétele">
+<h2>Új Ügyfél felvétele</h2>
+<div class="row">
+    <form action="/customer/new" method="POST" class="six columns centered">
+        <ul>
+            <@inputFor type="text" field="name" v=(customer.getName())! pholder="Név" />
+            <@inputFor type="text" field="private_id" v=(customer.getPrivateId())! pholder="Személy/cégazonosító" />
+            <@inputFor type="text" field="city" v=(customer.getCity())! pholder="Város" />
+            <@inputFor type="text" field="address" v=(customer.getAddress())! pholder="Cím" />
+            <@inputFor type="text" field="postal_code" v=(customer.getPostalCode())! pholder="Irányítószám" />
+            <@inputFor type="password" field="password" v="" pholder="Jelszó" />
+            <@inputFor type="password" field="password_confirm" v="" pholder="Jelszó megerősítés" />
+            <li class="field">
+                <label for="office_id">Ügyfél létrehozása 
+                    <a href="/offices" target="_blank">ezen fiókokban</a>:
+                </label>
+                <div class="picker">
+                    <select name="office_id" value="${(customer.getOffice().getId())!}">
+                      <#list office_ids as oid>
+                          <option value="${oid}">${office_addrs[office_ids?seq_index_of(oid)]}</option>
+                      </#list>
+                    </select>
+              </div>
+            </li>
+            <li class="field">
+                <label class="checkbox" for="is_admin">
+                    <input type="checkbox" name="is_admin" id="is_admin" />
+                    <span> </span> Ügyintéző
+                </label>
+            </li>
+            <li class="field">
+                <div class="four columns pretty medium secondary btn">
+                    <input class="default" type="submit" value="Felvétel" />
+                </div>
+            </li>
+        </ul>
+    <form>
+</div>
+
+<div class="linkek">
+  <ul>
+      <li><a href="/customer/all">Összes ügyfél</a></li>
+      <li><a href="/">Vissza a kezdőoldalra</a></li>
+  </ul>
+</div>
+</@layout.mainLayout>

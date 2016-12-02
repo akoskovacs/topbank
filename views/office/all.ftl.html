@@ -1,0 +1,11 @@
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | Fiókok">
+<h2>TOP Bank Fiókok</h2>
+<#list offices as office>
+    <h3><a href="/office/${office.getId()}">${office.getLongAddress()}</a></h3>
+    <!--<iframe width="600" height="450" frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAWEKr1pVcKoprWazj9RQqHLBPZ7bFSFfU&q=${office.getLongAddress()}"
+     allowfullscreen></iframe>-->
+</iframe>
+</#list>
+</@layout.mainLayout>

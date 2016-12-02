@@ -1,0 +1,28 @@
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | Bejelentkezés">
+<h2>Bejelentkezés</h2>
+<div class="row">
+    <form action="/login" method="POST" class="six columns centered">
+        <fieldset>
+        <legend>Ügyféladatok</legend>
+        <ul>
+            <li class="field">
+                <input type="text" name="customer_id" placeholder="Ügyfélazonosító" class="input"/>
+            </li>
+            <li class="field">
+                <input type="password" name="customer_password" placeholder="Jelszó" class="input" />
+            </li>
+            <li class="field">
+                <div class="pretty medium primary btn">
+                    <input class="default" type="submit" value="Bejelentkezés" />
+                </div>
+            </li>
+        </ul>
+        </fieldset>
+    <form>
+</div>
+
+<div class="linkek">
+  <a href="/">Vissza a kezdőoldalra</a>
+</div>
+</@layout.mainLayout>

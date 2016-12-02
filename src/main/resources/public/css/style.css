@@ -1,0 +1,48 @@
+/*
+We highly recommend you use SASS and write your custom styles in sass/_custom.scss.
+However, this blank file is available if you prefer
+*/
+
+body {
+    background: #f3f3f1;
+}
+
+.rounded {
+    border: 1px solid gray;
+    padding: 10px 60px 10px 60px;
+    background: white;
+}
+
+#banklogo {
+    padding-left: 50px;
+}
+
+table#customer_table {
+	width: 60%;
+}
+
+table#customer_table thead {
+	float: left;
+}
+
+table#customer_table thead th {
+	display: block;
+}
+
+table#customer_table tbody {
+	float: right;
+}
+
+table#customer_table tbody td {
+	display: block;
+}
+
+ul.field-errors {
+    background-color: #f64a4a;
+    color: white;
+    border: 1px;
+    border-color: #e21212;  
+    font-size: 10pt;
+    list-style-type: disc;
+    padding-left: 20px;
+}

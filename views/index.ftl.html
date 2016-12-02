@@ -1,0 +1,31 @@
+<#import "layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | Kezdőoldal">
+<h1>TOP Bank</h1>
+<#if current_customer??>
+    <#if is_admin>
+        <h2>Vezérlőpult</h2>
+        <div class="row">
+            <div class="eight columns">
+                <div class="pretty default medium btn">
+                    <a href="/customer/all">Ügyfelek</a>
+                </div>
+                <div class="pretty primary medium btn">
+                    <a href="/customer/new">Új Ügyfél felvétele</a>
+                </div>
+            </div>
+        </div>
+        <h2>Egyebek</h2>
+        <div class="row">
+            <div class="four columns">
+                <div class="pretty default medium btn">
+                    <a href="/offices">Fiókok</a>
+                </div>
+            </div>
+        </div>
+    </#if>
+<#else>
+<div class="row">
+    <a href="/login">Bejelentkezés</a>
+</div>
+</#if>
+</@layout.mainLayout>

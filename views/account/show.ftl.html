@@ -1,0 +1,119 @@
+<#import "../layout.ftl.html" as layout />
+<@layout.mainLayout title="TOP Bank | Számla ${account.getId()}">
+<div class="row">
+<h2>Egyenleg: ${account.getAmount()?string.currency}</h2>
+<#if is_admin>
+    <h3>Számlatulajdonos: <a href="/customer/${customer.getId()}">${customer.getName()}</a></h3>
+<#else>
+    <h3>Számlatulajdonos: ${customer.getName()}</h3>
+</#if>
+<h3>Kártyák:</h3>
+<div class="row">
+    <div class="twelve columns">
+    <table>
+        <thead>
+            <tr>
+                <th>Azonosító</th>
+                <th>Típus</th>
+                <th>Kártyadíj</th>
+                <th>PIN</th>
+                <th>CCV2</th>
+                <th>Lejárati idő</th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list cards as card>
+                <tr>
+                    <td>${card.getId()}</td>
+                    <td>${card.getCardTypeName()}</td>
+                    <td>#{card.getFee(); M2}</td>
+                    <td>#{card.getPin(); M2}</td>
+                    <td>#{card.getCcv2(); M2}</td>
+                    <td>${card.getExpiration()}</td>
+                </tr>
+            </#list>
+        </tbody>
+    </table>
+    </div>
+</div>
+<p></p>
+</div>
+<h3>Tranzakciók:</h3>
+<div class="row">
+    <div class="twelve columns">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Összeg</th>
+                <th>Küldő számla</th>
+                <th>Fogadó számla</th>
+                <th>Közlöny</th>
+                <th>Leírás</th>
+                <th>Létrehozva</th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list transactions as trans>
+                <tr>
+                    <td>${trans.getId()}</td>
+                    <td>
+                        <#if account.getId() == trans.getPayeeAccountId()>
+                            <strong style="color: green;">+ ${trans.getAmount()?string.currency}</strong>
+                        <#elseif account.getId() == trans.getPayerAccountId()>
+                            <strong style="color: red;">- ${trans.getAmount()?string.currency}</strong>
+                        </#if>
+                    </td>
+                    <td>
+                        <#if trans.getPayerAccountId() != 0>
+                            <#if is_admin>
+                                <a href="/account/${trans.getPayerAccountId()}">${trans.getPayerAccountId()}</a>
+                            <#else>
+                                ${trans.getPayerAccountId()}
+                            </#if>
+                        </#if>
+                    </td>
+                    <td>
+                        <#if trans.getPayeeAccountId() != 0>
+                            <#if is_admin>
+                                <a href="/account/${trans.getPayeeAccountId()}">${trans.getPayeeAccountId()}</a>
+                            <#else>
+                                ${trans.getPayeeAccountId()}
+                            </#if>
+                        </#if>
+                    </td>
+                    <td>${trans.getStatement()}</td>
+                    <td><i>${trans.getComment()}</i></td>
+                    <td><i>${trans.getCreatedAt()}</i></td>
+                </tr>
+            </#list>
+        </tbody>
+    </table>
+    </div>
+</div>
+<p></p>
+<div class="row">
+    <div class="four columns">
+        <div class="btn pretty primary medium btn">
+            <#if is_admin>
+                <a href="/customer/${customer.getId()}/transaction/new">Új tranzakció</a>
+            <#else>
+                <a href="/transaction/new">Új tranzakció</a>
+            </#if>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <p></p>
+    <div class="linkek">
+      <ul>
+        <#if is_admin>
+          <li><a href="/customer/${customer.getId()}">Összes számla</a></li>
+        <#else>
+          <li><a href="/profile">Összes számla</a></li>
+        </#if>
+        <li><a href="/">Vissza a kezdőoldalra</a></li>
+      </ul>
+    </div>
+</div>
+</@layout.mainLayout>
