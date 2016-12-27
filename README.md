@@ -1,7 +1,6 @@
 # OnlineBank
-
+![Tranzakciók](https://github.com/akoskovacs/topbank/blob/java/screenshots/account.png)
 ## Függőségek
-
 ### Telepítés Linuxon
 Maven függőségkezelő
 ```
@@ -17,6 +16,7 @@ a következő Java library-ket használja:
 * Jetty (A Sparkhoz használt beépített webszerver)
 * log4j (A Spark loggere)
 * Freemarker (HTML sablonkönyvtár)
+* HSQL
 
 ## Fordítás
 A fordítás a Maven parancssori felületén keresztül történik. Az alábbi parancs
@@ -44,3 +44,4 @@ Ha a port szabad a webalkalmazás a http://localhost:4567/ címen nyitható meg.
 * target/: Lefordított állományok
 * views/: (MVC) Freemarker HTML nézetsablonok
 * pom.xml: Maven konfiguráció (projektnév, Java függőségek leírása) 
+![Új tranzakció](https://github.com/akoskovacs/topbank/blob/java/screenshots/transaction-new.png)
