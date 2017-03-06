@@ -171,6 +171,7 @@ public class Main {
             viewConfig.setDirectoryForTemplateLoading(new File(viewDirName));
             /* Ne legyen lokális a számformátum (rendes megjelenítés */
             viewConfig.setSetting("number_format", "computer");
+            viewConfig.setDefaultEncoding("UTF-8");
         } catch (Exception e) {
             System.err.println("A '" + viewDirName + "' nézetkönyvtár nem található!");
             e.printStackTrace();
